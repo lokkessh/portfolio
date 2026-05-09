@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lokesh Sahu | Video Editor & Motion Graphics Designer</title>
+<meta name="description" content="Professional Video Editor and Motion Graphics Designer from Rajnandgaon, Chhattisgarh. Cinematic edits, brand ads, reels, animations and premium visual stories.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --gold-dim: #8a6f30;
+    --bg-primary: #070707;
+    --bg-secondary: #0d0d0d;
+    --bg-card: #101010;
+    --bg-card-hover: #151515;
+    --text-primary: #f0ece4;
+    --text-secondary: #8a8680;
+    --text-muted: #4a4a4a;
+    --border: rgba(201,168,76,0.12);
+    --border-hover: rgba(201,168,76,0.45);
+    --radius: 10px;
+    --radius-lg: 18px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--bg-primary); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    background: rgba(7,7,7,0.88); backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%; display: flex; align-items: center; justify-content: space-between;
+    height: 66px; transition: all 0.3s;
+  }
+  .nav-logo { font-family: 'Anton', sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--text-primary); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a { font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { font-family: 'Poppins', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 0.48rem 1.2rem; border-radius: 3px; text-decoration: none; transition: all 0.3s; }
+  .nav-cta:hover { background: var(--gold); color: #000; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--text-primary); display: block; transition: all 0.3s; }
+  .mobile-menu { display: none; position: fixed; top: 66px; left: 0; right: 0; background: rgba(7,7,7,0.98); backdrop-filter: blur(20px); padding: 2rem 5%; flex-direction: column; gap: 1.5rem; border-bottom: 1px solid var(--border); z-index: 999; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .mobile-menu a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 5% 80px; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 65% 55% at 72% 48%, rgba(201,168,76,0.07) 0%, transparent 70%), radial-gradient(ellipse 40% 50% at 15% 80%, rgba(201,168,76,0.04) 0%, transparent 60%); }
+  .hero-grid { position: absolute; inset: 0; z-index: 0; opacity: 0.025; background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 55px 55px; }
+  .hero-content { position: relative; z-index: 1; max-width: 950px; }
+
+  .hero-eyebrow { font-family: 'Poppins', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; display: flex; align-items: center; gap: 1rem; }
+  .hero-eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--gold); }
+
+  .hero-name { font-family: 'Anton', sans-serif; font-size: clamp(4rem, 10vw, 8.5rem); line-height: 0.92; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-primary); margin-bottom: 0.6rem; }
+  .hero-name .gold { color: var(--gold); }
+
+  .hero-title { font-family: 'Poppins', sans-serif; font-size: clamp(0.75rem, 1.8vw, 1rem); font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 1.6rem; }
+  .hero-line { width: 55px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); margin-bottom: 1.5rem; }
+  .hero-tagline { font-size: 1rem; color: var(--text-secondary); font-weight: 300; max-width: 500px; margin-bottom: 2.5rem; line-height: 1.85; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-gold { font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.85rem 2rem; background: var(--gold); color: #000; border: none; border-radius: 3px; text-decoration: none; transition: all 0.3s; cursor: pointer; }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 14px 40px rgba(201,168,76,0.28); }
+  .btn-outline { font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.85rem 2rem; background: transparent; color: var(--gold); border: 1px solid var(--border-hover); border-radius: 3px; text-decoration: none; transition: all 0.3s; cursor: pointer; }
+  .btn-outline:hover { background: rgba(201,168,76,0.07); border-color: var(--gold); transform: translateY(-2px); }
+
+  .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--gold); display: block; line-height: 1; letter-spacing: 0.05em; }
+  .stat-label { font-family: 'Poppins', sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.2rem; }
+
+  /* MARQUEE */
+  .marquee-wrap { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1rem 0; background: var(--bg-secondary); }
+  .marquee-track { display: flex; gap: 3.5rem; animation: marquee 20s linear infinite; white-space: nowrap; }
+  .marquee-item { font-family: 'Poppins', sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); display: flex; align-items: center; gap: 1.2rem; flex-shrink: 0; }
+  .mdot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section { padding: 100px 5%; }
+  .sec-label { font-family: 'Poppins', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.8rem; }
+  .sec-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+  .sec-title { font-family: 'Anton', sans-serif; font-size: clamp(2.2rem, 5vw, 3.8rem); letter-spacing: 0.03em; text-transform: uppercase; line-height: 1.05; margin-bottom: 1rem; color: var(--text-primary); }
+  .sec-sub { font-size: 0.88rem; color: var(--text-secondary); max-width: 540px; line-height: 1.85; font-weight: 300; }
+  .sec-header { margin-bottom: 4rem; }
+
+  /* ABOUT */
+  #about { background: var(--bg-secondary); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-frame { width: 100%; aspect-ratio: 4/5; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--bg-card); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .about-frame-inner { font-size: 6rem; opacity: 0.12; animation: float 5s ease-in-out infinite; }
+  .about-badge { position: absolute; bottom: -18px; right: -18px; width: 115px; height: 115px; background: var(--gold); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 4px solid var(--bg-secondary); }
+  .about-badge-n { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: #000; line-height: 1; letter-spacing: 0.05em; }
+  .about-badge-t { font-family: 'Poppins', sans-serif; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.08em; color: #000; text-transform: uppercase; text-align: center; line-height: 1.3; }
+  .about-corner { position: absolute; top: -14px; left: -14px; width: 72px; height: 72px; border: 2px solid rgba(201,168,76,0.35); border-radius: 50%; }
+  .about-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.1rem; font-weight: 300; }
+  .about-desc strong { color: var(--text-primary); font-weight: 600; }
+  .about-pts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 2rem; }
+  .apt { display: flex; align-items: center; gap: 0.6rem; font-family: 'Poppins', sans-serif; font-size: 0.76rem; font-weight: 600; color: var(--text-secondary); }
+  .apt-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  /* SERVICES */
+  #services { background: var(--bg-primary); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .svc-card { background: var(--bg-card); padding: 2.2rem 1.8rem; transition: all 0.35s; position: relative; overflow: hidden; }
+  .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.4s; }
+  .svc-card:hover { background: var(--bg-card-hover); }
+  .svc-card:hover::after { width: 100%; }
+  .svc-img { width: 100%; height: 130px; border-radius: 8px; overflow: hidden; margin-bottom: 1.2rem; background: #0a0a0a; }
+  .svc-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.82; transition: opacity 0.3s, transform 0.4s; }
+  .svc-card:hover .svc-img img { opacity: 1; transform: scale(1.04); }
+  .svc-name { font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
+  .svc-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+  /* PORTFOLIO */
+  #portfolio { background: var(--bg-secondary); }
+  .port-filters { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .flt-btn { font-family: 'Poppins', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.45rem 1.1rem; border: 1px solid var(--border); border-radius: 100px; background: transparent; color: var(--text-secondary); cursor: pointer; transition: all 0.3s; }
+  .flt-btn.active, .flt-btn:hover { background: var(--gold); border-color: var(--gold); color: #000; }
+  .port-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.4rem; }
+  .port-card { border-radius: var(--radius); overflow: hidden; background: var(--bg-card); border: 1px solid var(--border); transition: all 0.4s; cursor: pointer; }
+  .port-card:hover { transform: translateY(-6px); border-color: var(--border-hover); box-shadow: 0 20px 55px rgba(0,0,0,0.5); }
+  .port-thumb { width: 100%; aspect-ratio: 16/9; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .port-thumb-bg { position: absolute; inset: 0; }
+  .port-play { position: relative; z-index: 1; width: 50px; height: 50px; border-radius: 50%; background: rgba(201,168,76,0.15); border: 1px solid var(--border-hover); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: all 0.3s; }
+  .port-card:hover .port-play { background: var(--gold); transform: scale(1.1); }
+  .port-badge { position: absolute; bottom: 0.7rem; left: 0.7rem; font-family: 'Poppins', sans-serif; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; background: var(--gold); color: #000; padding: 0.18rem 0.55rem; border-radius: 2px; }
+  .port-info { padding: 1.1rem 1.4rem; }
+  .port-title { font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem; }
+  .port-type { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.04em; font-weight: 400; }
+
+  /* PROCESS */
+  #process { background: var(--bg-primary); }
+  .proc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.8rem; }
+  .proc-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.6rem; transition: all 0.4s; }
+  .proc-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+  .proc-img { width: 100%; height: 110px; border-radius: 8px; overflow: hidden; margin-bottom: 1.2rem; background: #090909; }
+  .proc-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.78; border-radius: 8px; transition: opacity 0.3s; }
+  .proc-card:hover .proc-img img { opacity: 1; }
+  .proc-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.2rem; color: rgba(201,168,76,0.1); line-height: 1; margin-bottom: 0.8rem; display: block; letter-spacing: 0.05em; }
+  .proc-name { font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
+  .proc-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+  /* SKILLS */
+  #skills { background: var(--bg-secondary); }
+  .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .skills-col-title { font-family: 'Poppins', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+  .sw-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.75rem; }
+  .sw-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 0.8rem; text-align: center; transition: all 0.3s; }
+  .sw-card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateY(-3px); }
+  .sw-logo { width: 44px; height: 44px; margin: 0 auto 0.6rem; display: flex; align-items: center; justify-content: center; }
+  .sw-logo img { width: 38px; height: 38px; object-fit: contain; }
+  .sw-name { font-family: 'Poppins', sans-serif; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.04em; color: var(--text-secondary); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+  .stag { font-family: 'Poppins', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.07em; padding: 0.45rem 0.95rem; border: 1px solid var(--border); border-radius: 100px; color: var(--text-secondary); cursor: default; transition: all 0.3s; }
+  .stag:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.05); }
+
+  /* ACHIEVEMENTS */
+  #achievements { background: var(--bg-primary); }
+  .ach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.8rem; }
+  .ach-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem 1.8rem; text-align: center; position: relative; overflow: hidden; transition: all 0.4s; }
+  .ach-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 55%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .ach-card:hover { transform: translateY(-6px); border-color: var(--border-hover); box-shadow: 0 20px 55px rgba(0,0,0,0.4); }
+  .ach-icon { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+  .ach-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: var(--gold); display: block; line-height: 1; margin-bottom: 0.4rem; letter-spacing: 0.05em; }
+  .ach-title { font-family: 'Poppins', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: 0.04em; }
+  .ach-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+  /* CONTACT */
+  #contact { background: var(--bg-secondary); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .contact-intro { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 3rem; font-weight: 300; }
+  .contact-items { display: flex; flex-direction: column; gap: 1.4rem; }
+  .c-item { display: flex; align-items: center; gap: 1.1rem; text-decoration: none; transition: all 0.3s; }
+  .c-item:hover .c-icon { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+  .c-item:hover .c-text { color: var(--gold); }
+  .c-icon { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; transition: all 0.3s; background: var(--bg-card); }
+  .c-label { font-family: 'Poppins', sans-serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.15rem; }
+  .c-text { font-size: 0.85rem; font-weight: 500; color: var(--text-primary); transition: color 0.3s; }
+  .c-form { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.2rem; }
+  .c-form-title { font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.4rem; }
+  .fg { margin-bottom: 1.1rem; }
+  .flabel { font-family: 'Poppins', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.45rem; }
+  .finput, .ftextarea { width: 100%; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 0.7rem 0.9rem; color: var(--text-primary); font-family: 'Poppins', sans-serif; font-size: 0.82rem; outline: none; transition: border-color 0.3s; }
+  .finput:focus, .ftextarea:focus { border-color: var(--gold); }
+  .ftextarea { resize: vertical; min-height: 110px; }
+  .fsubmit { width: 100%; font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.85rem; background: var(--gold); color: #000; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s; margin-top: 0.4rem; }
+  .fsubmit:hover { background: var(--gold-light); box-shadow: 0 8px 28px rgba(201,168,76,0.28); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer { background: var(--bg-primary); border-top: 1px solid var(--border); padding: 2.2rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .foot-brand { font-family: 'Anton', sans-serif; font-size: 1.1rem; letter-spacing: 0.06em; color: var(--text-primary); }
+  .foot-brand span { color: var(--gold); }
+  .foot-copy { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.05em; }
+  .foot-soc { display: flex; gap: 0.9rem; }
+  .foot-soc a { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: all 0.3s; }
+  .foot-soc a:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.07); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-visual { display: none; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .skills-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 65px 5%; }
+    .hero { padding: 100px 5% 60px; }
+    .hero-stats { gap: 1.8rem; }
+    .port-grid { grid-template-columns: 1fr; }
+    .proc-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .hero-btns { flex-direction: column; }
+    .btn-gold, .btn-outline { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">LK<span>S</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#portfolio" onclick="toggleMenu()">Portfolio</a>
+  <a href="#process" onclick="toggleMenu()">Process</a>
+  <a href="#skills" onclick="toggleMenu()">Skills</a>
+  <a href="#achievements" onclick="toggleMenu()">Achievements</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Video Editor &amp; Motion Designer · Rajnandgaon, India</div>
+    <h1 class="hero-name">LOKESH<br><span class="gold">SAHU</span></h1>
+    <p class="hero-title">Video Editor &amp; Motion Graphics Designer</p>
+    <div class="hero-line"></div>
+    <p class="hero-tagline">Creating cinematic videos, engaging reels, and premium visual stories that leave a lasting impression.</p>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-gold">View Portfolio</a>
+      <a href="#contact" class="btn-outline">Contact Me</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-num">100+</span><span class="stat-label">Projects Delivered</span></div>
+      <div><span class="stat-num">2M+</span><span class="stat-label">Instagram Views</span></div>
+      <div><span class="stat-num">2.5+</span><span class="stat-label">Years Experience</span></div>
+      <div><span class="stat-num">∞</span><span class="stat-label">Creative Vision</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="mdot"></span>Professional Edits</span>
+    <span class="marquee-item"><span class="mdot"></span>Motion Graphics</span>
+    <span class="marquee-item"><span class="mdot"></span>Brand Ads</span>
+    <span class="marquee-item"><span class="mdot"></span>AI Animation</span>
+    <span class="marquee-item"><span class="mdot"></span>Instagram Reels</span>
+    <span class="marquee-item"><span class="mdot"></span>Vlog Editing</span>
+    <span class="marquee-item"><span class="mdot"></span>Color Grading</span>
+    <span class="marquee-item"><span class="mdot"></span>Sound Design</span>
+    <span class="marquee-item"><span class="mdot"></span>YouTube Videos</span>
+    <span class="marquee-item"><span class="mdot"></span>Wedding Films</span>
+    <span class="marquee-item"><span class="mdot"></span>Professional Edits</span>
+    <span class="marquee-item"><span class="mdot"></span>Motion Graphics</span>
+    <span class="marquee-item"><span class="mdot"></span>Brand Ads</span>
+    <span class="marquee-item"><span class="mdot"></span>AI Animation</span>
+    <span class="marquee-item"><span class="mdot"></span>Instagram Reels</span>
+    <span class="marquee-item"><span class="mdot"></span>Vlog Editing</span>
+    <span class="marquee-item"><span class="mdot"></span>Color Grading</span>
+    <span class="marquee-item"><span class="mdot"></span>Sound Design</span>
+    <span class="marquee-item"><span class="mdot"></span>YouTube Videos</span>
+    <span class="marquee-item"><span class="mdot"></span>Wedding Films</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div style="position:relative;">
+        <div class="about-frame">
+          <div class="about-frame-inner">🎬</div>
+          <div class="about-badge">
+            <span class="about-badge-n">100+</span>
+            <span class="about-badge-t">Projects Done</span>
+          </div>
+        </div>
+        <div class="about-corner"></div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-header reveal">
+        <div class="sec-label">About Me</div>
+        <h2 class="sec-title">CRAFTING STORIES THROUGH MOTION</h2>
+      </div>
+      <p class="about-desc reveal">I am <strong>Lokesh Sahu</strong>, a professional Video Editor and Motion Graphics Designer from Rajnandgaon, Chhattisgarh, India. With a deep passion for visual storytelling, I transform raw footage into cinematic masterpieces that captivate and connect with audiences.</p>
+      <p class="about-desc reveal">Over <strong>2.5+ years</strong> I have delivered <strong>100+ premium projects</strong> — high-impact brand commercials, viral reels, creative AI animations, and professional edits across every category. I have collaborated with <strong>multiple brands</strong>, always studying the reference and delivering exactly the vision my clients have in mind.</p>
+      <p class="about-desc reveal">One of my AI animation recreations — inspired by the viral <strong>Bairaan song trend</strong> featuring Radha Krishna — crossed <strong>2 Million+ views on Instagram</strong>. Whatever style you need, I bring it to life with precision and creative excellence.</p>
+      <div class="about-pts reveal">
+        <div class="apt"><span class="apt-dot"></span>Cinematic Color Grading</div>
+        <div class="apt"><span class="apt-dot"></span>Brand Collaborations</div>
+        <div class="apt"><span class="apt-dot"></span>Motion Graphics & VFX</div>
+        <div class="apt"><span class="apt-dot"></span>Reference-Based Edits</div>
+        <div class="apt"><span class="apt-dot"></span>AI Video Concepts</div>
+        <div class="apt"><span class="apt-dot"></span>Audio Design & Sync</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-header reveal">
+    <div class="sec-label">What I Do</div>
+    <h2 class="sec-title">SERVICES I OFFER</h2>
+    <p class="sec-sub">From professional brand ads and cinematic vlogs to AI animations and motion graphics — every project gets premium treatment.</p>
+  </div>
+  <div class="services-grid reveal">
+
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&q=80" alt="Professional Video Editing" loading="lazy"></div>
+      <div class="svc-name">Professional Video Editing</div>
+      <p class="svc-desc">Clean, precise edits with smooth pacing and cinematic flow. Corporate videos, YouTube content, and high-end production edits.</p>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=80" alt="Vlog Editing" loading="lazy"></div>
+      <div class="svc-name">Vlog Editing</div>
+      <p class="svc-desc">Dynamic vlog edits with engaging pacing, color grading, text overlays, and music sync that keep viewers hooked till the end.</p>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1598387180441-e36cc6bd1e56?w=400&q=80" alt="Brand Ads" loading="lazy"></div>
+      <div class="svc-name">Brand Ads & Commercials</div>
+      <p class="svc-desc">High-impact promotional videos for businesses. Product showcases, testimonials, and creative brand storytelling that converts.</p>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=400&q=80" alt="Motion Graphics" loading="lazy"></div>
+      <div class="svc-name">Motion Graphics & Animation</div>
+      <p class="svc-desc">Dynamic animated graphics, logo reveals, lower thirds, kinetic typography, and motion design that elevates any video.</p>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="AI Video" loading="lazy"></div>
+      <div class="svc-name">AI Video Concepts</div>
+      <p class="svc-desc">Creative AI-generated and AI-enhanced videos — animated stories, concept videos, and digital art edits that go viral.</p>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&q=80" alt="Instagram Reels" loading="lazy"></div>
+      <div class="svc-name">Instagram Reels Editing</div>
+      <p class="svc-desc">Viral-ready short-form content with trending transitions, music sync, and scroll-stopping visual style for Instagram growth.</p>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=400&q=80" alt="Music Video" loading="lazy"></div>
+      <div class="svc-name">Music Video Editing</div>
+      <p class="svc-desc">Beat-sync cuts, visual effects, and cinematic color grading that perfectly amplify the emotion and energy of your music.</p>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1517430816045-df4b7de01a7f?w=400&q=80" alt="YouTube Videos" loading="lazy"></div>
+      <div class="svc-name">YouTube Video Editing</div>
+      <p class="svc-desc">Professional long-form YouTube edits with clean cuts, graphics, lower thirds, sound design, and retention-focused pacing.</p>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=400&q=80" alt="Wedding Video" loading="lazy"></div>
+      <div class="svc-name">Wedding Video Editing</div>
+      <p class="svc-desc">Cinematic wedding films capturing every emotion — from the first look to the grand celebration. Highlights, full films & teaser reels.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="sec-header reveal">
+    <div class="sec-label">My Work</div>
+    <h2 class="sec-title">SELECTED PORTFOLIO</h2>
+    <p class="sec-sub">A curated selection of projects across professional edits, brands, AI animation, reels, and more.</p>
+  </div>
+  <div class="port-filters reveal">
+    <button class="flt-btn active" onclick="filterPort('all',this)">All Projects</button>
+    <button class="flt-btn" onclick="filterPort('pro',this)">Professional</button>
+    <button class="flt-btn" onclick="filterPort('brand',this)">Brand</button>
+    <button class="flt-btn" onclick="filterPort('ai',this)">AI / Animation</button>
+    <button class="flt-btn" onclick="filterPort('reel',this)">Reels</button>
+    <button class="flt-btn" onclick="filterPort('wedding',this)">Wedding</button>
+  </div>
+  <div class="port-grid reveal" id="portGrid">
+
+    <div class="port-card" data-cat="ai">
+      <div class="port-thumb">
+        <div class="port-thumb-bg" style="background:linear-gradient(135deg,#0d001a,#1a0030)"></div>
+        <div class="port-play">▶</div>
+        <span class="port-badge">AI Animation · 2M+ Views</span>
+      </div>
+      <div class="port-info">
+        <div class="port-title">Radha Krishna — Bairaan Song Recreation</div>
+        <div class="port-type">AI Animation · Viral Instagram · 2 Million+ Views</div>
+      </div>
+    </div>
+
+    <div class="port-card" data-cat="brand">
+      <div class="port-thumb">
+        <div class="port-thumb-bg" style="background:linear-gradient(135deg,#001a0d,#003018)"></div>
+        <div class="port-play">▶</div>
+        <span class="port-badge">Brand Ad</span>
+      </div>
+      <div class="port-info">
+        <div class="port-title">ADK Makers — Brand Commercial</div>
+        <div class="port-type">Brand Ad · Motion Graphics · Product Showcase</div>
+      </div>
+    </div>
+
+    <div class="port-card" data-cat="pro">
+      <div class="port-thumb">
+        <div class="port-thumb-bg" style="background:linear-gradient(135deg,#001015,#002030)"></div>
+        <div class="port-play">▶</div>
+        <span class="port-badge">Professional Edit</span>
+      </div>
+      <div class="port-info">
+        <div class="port-title">The Unique Flea — Event Highlight</div>
+        <div class="port-type">Professional Edit · High Energy · Motion Graphics</div>
+      </div>
+    </div>
+
+    <div class="port-card" data-cat="reel">
+      <div class="port-thumb">
+        <div class="port-thumb-bg" style="background:linear-gradient(135deg,#1a000d,#30001a)"></div>
+        <div class="port-play">▶</div>
+        <span class="port-badge">Reels</span>
+      </div>
+      <div class="port-info">
+        <div class="port-title">Social Media Reels & Promotions</div>
+        <div class="port-type">Instagram Reels · Viral Content · Beat Sync</div>
+      </div>
+    </div>
+
+    <div class="port-card" data-cat="brand">
+      <div class="port-thumb">
+        <div class="port-thumb-bg" style="background:linear-gradient(135deg,#101000,#202000)"></div>
+        <div class="port-play">▶</div>
+        <span class="port-badge">Brand Collab</span>
+      </div>
+      <div class="port-info">
+        <div class="port-title">Multi-Brand Collaboration Projects</div>
+        <div class="port-type">Reference-Based Edits · Brand Videos · Delivered</div>
+      </div>
+    </div>
+
+    <div class="port-card" data-cat="pro">
+      <div class="port-thumb">
+        <div class="port-thumb-bg" style="background:linear-gradient(135deg,#001a1a,#003030)"></div>
+        <div class="port-play">▶</div>
+        <span class="port-badge">YouTube</span>
+      </div>
+      <div class="port-info">
+        <div class="port-title">YouTube Content & Channel Edits</div>
+        <div class="port-type">Long Form · Professional Finishing · Sound Design</div>
+      </div>
+    </div>
+
+    <div class="port-card" data-cat="wedding">
+      <div class="port-thumb">
+        <div class="port-thumb-bg" style="background:linear-gradient(135deg,#1a0d0d,#2d1515)"></div>
+        <div class="port-play">▶</div>
+        <span class="port-badge">Wedding</span>
+      </div>
+      <div class="port-info">
+        <div class="port-title">Shubham & Archi Wedding Carnival</div>
+        <div class="port-type">Cinematic Wedding Film · Storytelling Edit</div>
+      </div>
+    </div>
+
+    <div class="port-card" data-cat="wedding">
+      <div class="port-thumb">
+        <div class="port-thumb-bg" style="background:linear-gradient(135deg,#0d1a0d,#152d15)"></div>
+        <div class="port-play">▶</div>
+        <span class="port-badge">Wedding</span>
+      </div>
+      <div class="port-info">
+        <div class="port-title">Vanshika & Aditya — Haldi & Phera</div>
+        <div class="port-type">Wedding Highlight · Emotional Storytelling</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="sec-header reveal">
+    <div class="sec-label">How I Work</div>
+    <h2 class="sec-title">MY EDITING PROCESS</h2>
+    <p class="sec-sub">A structured, professional workflow ensuring every project is delivered with quality, precision, and creativity.</p>
+  </div>
+  <div class="proc-grid">
+    <div class="proc-card reveal">
+      <div class="proc-img"><img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=400&q=80" alt="Footage Organization" loading="lazy"></div>
+      <span class="proc-num">01</span>
+      <div class="proc-name">Footage Organization</div>
+      <p class="proc-desc">Carefully organizing all raw footage, selecting the best shots, and building a strong visual story structure before touching the timeline.</p>
+    </div>
+    <div class="proc-card reveal">
+      <div class="proc-img"><img src="https://images.unsplash.com/photo-1536240478700-b869ad10e2a8?w=400&q=80" alt="Story Cut" loading="lazy"></div>
+      <span class="proc-num">02</span>
+      <div class="proc-name">Story & Rough Cut</div>
+      <p class="proc-desc">Clean, rhythm-driven cuts and smooth pacing — avoiding overuse of transitions to maintain a natural, professional flow that serves the narrative.</p>
+    </div>
+    <div class="proc-card reveal">
+      <div class="proc-img"><img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&q=80" alt="Color Audio Motion" loading="lazy"></div>
+      <span class="proc-num">03</span>
+      <div class="proc-name">Color, Audio & Motion</div>
+      <p class="proc-desc">Cinematic color grading, crystal-clear audio balance, and dynamic motion graphics that elevate every frame of the final story.</p>
+    </div>
+    <div class="proc-card reveal">
+      <div class="proc-img"><img src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=400&q=80" alt="Final Delivery" loading="lazy"></div>
+      <span class="proc-num">04</span>
+      <div class="proc-name">Final Polish & Delivery</div>
+      <p class="proc-desc">Final review pass for consistency, quality check, and professional export — delivered in the perfect format for your platform and audience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-header reveal">
+    <div class="sec-label">Expertise</div>
+    <h2 class="sec-title">SKILLS & SOFTWARE</h2>
+  </div>
+  <div class="skills-layout">
+    <div>
+      <div class="skills-col-title reveal">Software I Use</div>
+      <div class="sw-grid reveal">
+
+        <div class="sw-card">
+          <div class="sw-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Adobe Premiere Pro" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span style="display:none;font-size:1.8rem;">🎬</span>
+          </div>
+          <div class="sw-name">Premiere Pro</div>
+        </div>
+
+        <div class="sw-card">
+          <div class="sw-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg" alt="Adobe After Effects" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span style="display:none;font-size:1.8rem;">✨</span>
+          </div>
+          <div class="sw-name">After Effects</div>
+        </div>
+
+        <div class="sw-card">
+          <div class="sw-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/DaVinci_Resolve_17_logo.svg" alt="DaVinci Resolve" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span style="display:none;font-size:1.8rem;">🎨</span>
+          </div>
+          <div class="sw-name">DaVinci Resolve</div>
+        </div>
+
+        <div class="sw-card">
+          <div class="sw-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span style="display:none;font-size:1.8rem;">🖼️</span>
+          </div>
+          <div class="sw-name">Photoshop</div>
+        </div>
+
+        <div class="sw-card">
+          <div class="sw-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Canva_Logo.svg/120px-Canva_Logo.svg.png" alt="Canva" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span style="display:none;font-size:1.8rem;">🎨</span>
+          </div>
+          <div class="sw-name">Canva</div>
+        </div>
+
+        <div class="sw-card">
+          <div class="sw-logo" style="background:#1a1a2e;border-radius:8px;padding:4px;">
+            <svg viewBox="0 0 40 40" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="7" fill="#1A1A2E"/>
+              <path d="M8 11h24v4H8zM8 18h17v4H8zM8 25h20v4H8z" fill="#00D4FF"/>
+              <circle cx="30" cy="20" r="4" fill="#FF6B35"/>
+            </svg>
+          </div>
+          <div class="sw-name">Filmora</div>
+        </div>
+
+        <div class="sw-card">
+          <div class="sw-logo" style="background:#0a0a0a;border-radius:8px;padding:4px;">
+            <svg viewBox="0 0 40 40" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="7" fill="#0A0A0A"/>
+              <circle cx="20" cy="20" r="8" stroke="#c9a84c" stroke-width="2.5"/>
+              <circle cx="20" cy="20" r="3.5" fill="#c9a84c"/>
+              <path d="M20 8v4M20 28v4M8 20h4M28 20h4" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sw-name">AI Tools</div>
+        </div>
+
+      </div>
+    </div>
+    <div>
+      <div class="skills-col-title reveal">Creative Skills</div>
+      <div class="skill-tags reveal">
+        <span class="stag">Video Editing</span>
+        <span class="stag">Motion Graphics</span>
+        <span class="stag">Color Grading</span>
+        <span class="stag">AI Animation</span>
+        <span class="stag">Brand Ads</span>
+        <span class="stag">Instagram Reels</span>
+        <span class="stag">YouTube Videos</span>
+        <span class="stag">Vlog Editing</span>
+        <span class="stag">Music Videos</span>
+        <span class="stag">Event Highlights</span>
+        <span class="stag">Sound Design</span>
+        <span class="stag">Audio Sync</span>
+        <span class="stag">Text Animation</span>
+        <span class="stag">Thumbnail Design</span>
+        <span class="stag">Visual Storytelling</span>
+        <span class="stag">Wedding Films</span>
+        <span class="stag">Reference-Based Edits</span>
+        <span class="stag">Social Media Content</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="sec-header reveal">
+    <div class="sec-label">Milestones</div>
+    <h2 class="sec-title">ACHIEVEMENTS</h2>
+    <p class="sec-sub">Numbers that reflect dedication, consistency, and the trust of every client and viewer.</p>
+  </div>
+  <div class="ach-grid">
+    <div class="ach-card reveal">
+      <span class="ach-icon">🔥</span>
+      <span class="ach-num">2M+</span>
+      <div class="ach-title">Instagram Views</div>
+      <p class="ach-desc">My Radha Krishna AI Animation — a recreation inspired by the viral Bairaan song trend using Krishna Rakha — crossed 2 Million+ views on Instagram and became a viral sensation.</p>
+    </div>
+    <div class="ach-card reveal">
+      <span class="ach-icon">🏆</span>
+      <span class="ach-num">100+</span>
+      <div class="ach-title">Projects Completed</div>
+      <p class="ach-desc">Over 100 customized video projects delivered across brands, events, reels, weddings, and creative content — every one crafted with precision and passion.</p>
+    </div>
+    <div class="ach-card reveal">
+      <span class="ach-icon">🤝</span>
+      <span class="ach-num">20+</span>
+      <div class="ach-title">Brand Collaborations</div>
+      <p class="ach-desc">Successfully collaborated with multiple brands, delivering reference-based professional edits, commercials, and social media content that met their exact vision.</p>
+    </div>
+    <div class="ach-card reveal">
+      <span class="ach-icon">🎬</span>
+      <span class="ach-num">7+</span>
+      <div class="ach-title">Software Mastered</div>
+      <p class="ach-desc">Proficient in Premiere Pro, After Effects, DaVinci Resolve, Photoshop, Filmora, Canva, and AI-powered creative video tools — complete post-production workflow.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-header reveal">
+    <div class="sec-label">Get In Touch</div>
+    <h2 class="sec-title">LET'S WORK TOGETHER</h2>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro reveal">Have a brand campaign, event, creative project, or any edit you need done professionally? I study your reference and deliver exactly what you envision. Let's create something extraordinary together.</p>
+      <div class="contact-items">
+        <a href="https://instagram.com/lokkessh_" target="_blank" class="c-item reveal">
+          <div class="c-icon">📸</div>
+          <div><div class="c-label">Instagram</div><div class="c-text">@lokkessh_</div></div>
+        </a>
+        <a href="mailto:lokeshkumarsahu170@gmail.com" class="c-item reveal">
+          <div class="c-icon">✉️</div>
+          <div><div class="c-label">Email</div><div class="c-text">lokeshkumarsahu170@gmail.com</div></div>
+        </a>
+        <div class="c-item reveal">
+          <div class="c-icon">📍</div>
+          <div><div class="c-label">Location</div><div class="c-text">Rajnandgaon, Chhattisgarh, India</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="c-form reveal">
+      <div class="c-form-title">Send Me a Message</div>
+      <div class="fg"><label class="flabel">Your Name</label><input type="text" class="finput" placeholder="Enter your name"></div>
+      <div class="fg"><label class="flabel">Email Address</label><input type="email" class="finput" placeholder="your@email.com"></div>
+      <div class="fg"><label class="flabel">Project Type</label><input type="text" class="finput" placeholder="e.g. Brand Ad, Reels, Vlog..."></div>
+      <div class="fg"><label class="flabel">Message</label><textarea class="ftextarea" placeholder="Tell me about your project..."></textarea></div>
+      <button class="fsubmit" onclick="submitForm()">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand">LOKESH <span>SAHU</span></div>
+  <div class="foot-copy">© 2026 Lokesh Sahu. All Rights Reserved.</div>
+  <div class="foot-soc">
+    <a href="https://instagram.com/lokkessh_" target="_blank">📸</a>
+    <a href="mailto:lokeshkumarsahu170@gmail.com">✉️</a>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.background = window.scrollY > 80 ? 'rgba(7,7,7,0.98)' : 'rgba(7,7,7,0.88)';
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), (i % 4) * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function filterPort(cat, btn) {
+    document.querySelectorAll('.flt-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.port-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+
+  function submitForm() {
+    const btn = document.querySelector('.fsubmit');
+    btn.textContent = 'Message Sent! ✓';
+    btn.style.background = '#2d6a4f'; btn.style.color = '#fff';
+    setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; btn.style.color = ''; }, 3000);
+  }
+</script>
+</body>
+</html>
